@@ -8,12 +8,25 @@ namespace StackExchangeApi
         static void Main(string[] args)
         {
 
-            ConnectionMultiplexer redis = ConnectionMultiplexer.Connect("192.168.56.101");
+            ConnectionMultiplexer redis = ConnectionMultiplexer.Connect("localhost");
 
-            DataStructString dataStructString = new DataStructString(redis);
+            #region String
+            //{
+            //    DataStructString dataStructString = new DataStructString(redis);
 
-            dataStructString.Show();
+            //    dataStructString.Show();
+            //}
+            #endregion
 
+            #region Hash
+
+            {
+                DataStructHash dataStructHash = new DataStructHash(redis);
+
+                dataStructHash.Show();
+            }
+
+            #endregion
         }
     }
 }
