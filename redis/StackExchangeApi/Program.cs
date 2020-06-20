@@ -30,10 +30,20 @@ namespace StackExchangeApi
 
             #region Set
 
-            {
-                DataStructSet dataStructSet = new DataStructSet(redis);
+            // {
+            //     DataStructSet dataStructSet = new DataStructSet(redis);
 
-                dataStructSet.Show();
+            //     dataStructSet.Show();
+            // }
+
+            #endregion
+
+            #region ZSet
+
+            {
+                DataStructZSet dataStructZSet = new DataStructZSet(redis);
+
+                dataStructZSet.Show();
             }
 
             #endregion
