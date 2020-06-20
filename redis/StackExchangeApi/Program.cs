@@ -10,9 +10,9 @@ namespace StackExchangeApi
 
             ConnectionMultiplexer redis = ConnectionMultiplexer.Connect("121.36.204.34");
 
-            IServer server = redis.GetServer("121.36.204.34","6379");
+            //IServer server = redis.GetServer("121.36.204.34","6379");
 
-            server.FlushAllDatabases();
+            //server.FlushAllDatabases();
 
             #region String
             //{
