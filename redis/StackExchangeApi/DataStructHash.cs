@@ -117,9 +117,24 @@ namespace StackExchangeApi
 
             #endregion
 
+            #region hgetall commad
+
+            // 获取key中所以的field/value集合
+            {
+                // hgetall hkey
+                var hashes = db.HashGetAll("hkey");
+
+                foreach (var entry in hashes)
+                {
+                    System.Console.WriteLine($"filed:{entry.Name},value:{entry.Value}");
+                }
+            }
+
+            #endregion
+
             #region hkeys command
 
-            // 获取key中的所有filed
+            // 获取key中的所有filed集合
             {
                 // hkeys hkey
                 var keys = db.HashKeys("hkey");
@@ -134,6 +149,7 @@ namespace StackExchangeApi
 
             #region hvals command
 
+            // 获取key中的所有value集合
             {
                 // hvals hkey
                 var values = db.HashValues("hkey");
@@ -146,9 +162,70 @@ namespace StackExchangeApi
 
             #endregion
 
+            #region hdel command
 
+            // 删除key中的filed
+            {
+                // 删除单个filed hdel hkey name
+                var nameDel = db.HashDelete("hkey", "name");
 
+                // 删除多个filed hdel hkey id height
+                var filedsDel = db.HashDelete("hkey", new RedisValue[] { "id", "height" });
 
+                // hgetall hkey
+                var hashes = db.HashGetAll("hkey");
+
+                foreach (var entry in hashes)
+                {
+                    System.Console.WriteLine($"filed:{entry.Name},value:{entry.Value}");
+                }
+            }
+
+            #endregion
+
+            #region hexists command
+
+            // 判断是否存在key中的某个filed
+            {
+                // hexists hkey age
+                var ageExists = db.HashExists("hkey", "age");
+
+                var idExists = db.HashExists("hkey", "id");
+
+                System.Console.WriteLine($"ageExists:{ageExists},idExists:{idExists}");
+            }
+            #endregion
+
+            #region hincrby hincrbyfloat
+
+            // 让key中的某个filed的value自增，filed的value必须为数值类型
+            {
+                // hincrby hkey age
+                var age = db.HashIncrement("hkey", "age");
+                System.Console.WriteLine($"age:{age}");
+
+                // hincrby hkey age 5
+                age = db.HashIncrement("hkey", "age", 5);
+                System.Console.WriteLine($"age:{age}");
+
+                // hincrbyfloat hkey age -6.0
+                double doubleAge = db.HashIncrement("hkey", "age", -6.0);
+                System.Console.WriteLine($"doubleAge:{doubleAge}");
+            }
+
+            #endregion
+
+            #region hstrlen command
+
+            // 获取key中filed的value的长度         
+            {
+                // hstrlen hkey age
+                var length = db.HashStringLength("hkey", "age");
+
+                System.Console.WriteLine(length);
+            }
+
+            #endregion
 
         }
     }

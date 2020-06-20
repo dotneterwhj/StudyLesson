@@ -8,7 +8,7 @@ namespace StackExchangeApi
         static void Main(string[] args)
         {
 
-            ConnectionMultiplexer redis = ConnectionMultiplexer.Connect("localhost");
+            ConnectionMultiplexer redis = ConnectionMultiplexer.Connect("121.36.204.34");
 
             #region String
             //{
