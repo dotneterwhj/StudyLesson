@@ -20,10 +20,20 @@ namespace StackExchangeApi
 
             #region Hash
 
-            {
-                DataStructHash dataStructHash = new DataStructHash(redis);
+            // {
+            //     DataStructHash dataStructHash = new DataStructHash(redis);
 
-                dataStructHash.Show();
+            //     dataStructHash.Show();
+            // }
+
+            #endregion
+
+            #region Set
+
+            {
+                DataStructSet dataStructSet = new DataStructSet(redis);
+
+                dataStructSet.Show();
             }
 
             #endregion
