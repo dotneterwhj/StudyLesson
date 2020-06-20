@@ -10,6 +10,10 @@ namespace StackExchangeApi
 
             ConnectionMultiplexer redis = ConnectionMultiplexer.Connect("121.36.204.34");
 
+            IServer server = redis.GetServer("121.36.204.34","6379");
+
+            server.FlushAllDatabases();
+
             #region String
             //{
             //    DataStructString dataStructString = new DataStructString(redis);
@@ -40,10 +44,20 @@ namespace StackExchangeApi
 
             #region ZSet
 
-            {
-                DataStructZSet dataStructZSet = new DataStructZSet(redis);
+            // {
+            //     DataStructZSet dataStructZSet = new DataStructZSet(redis);
 
-                dataStructZSet.Show();
+            //     dataStructZSet.Show();
+            // }
+
+            #endregion
+
+            #region List
+
+            {
+                DataStructList dataStructList = new DataStructList(redis);
+
+                dataStructList.Show();
             }
 
             #endregion
